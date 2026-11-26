@@ -1,0 +1,13 @@
+Build the make.fun entry for "The Internet in One Word" (u-ronigrv-the-internet-in-one-word-e388f33b).
+
+Write main.py (Python 3.13, repo root) that deterministically writes one word
+to /output/entry.txt: a single word describing the whole internet. The word
+must be 1-30 characters, plain UTF-8 text, not only whitespace, a single word
+(no spaces). Pick the word that best meets the judge brief: funniest and most
+fitting at once, true of the internet as a whole rather than one app, one site
+or one mood, surprising (not the first obvious word anyone would reach for),
+spelled correctly, instantly readable, short enough to land in one beat.
+No network, no randomness. Verify the gate rules in code.
+
+Then add README.md (from the requirements template), LICENSE (MIT), .gitignore,
+verify the entry locally, and commit.
