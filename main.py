@@ -26,13 +26,20 @@ ENTRY = "feral"
 
 def main() -> None:
     # Gate-verified in code: 1-30 chars, not only whitespace, one word.
+    # The output dir is absolute on purpose: the grader mounts the repo
+    # read-only and only the output dir is writable, so a relative
+    # "entry.txt" next to main.py would fail with a permission error.
     assert isinstance(ENTRY, str)
     assert 1 <= len(ENTRY) <= 30, "entry must be 1-30 characters"
     assert ENTRY.strip() != "", "entry must not be only whitespace"
     assert len(ENTRY.split()) == 1, "entry must be a single word"
     assert ENTRY == ENTRY.strip(), "entry must carry no surrounding whitespace"
     ENTRY.encode("utf-8")  # must be valid UTF-8 text
-    out_dir = os.environ.get("OUTPUT_DIR", "/output")
+    out_dir = (
+        os.environ.get("MAKEFUN_OUTPUT_DIR")
+        or os.environ.get("OUTPUT_DIR")
+        or "/output"
+    )
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8", newline="") as f:
